@@ -32,7 +32,7 @@ namespace Command_Line_Game1
             Console.WriteLine("The Dungeon of 4Chan, where all the good memes go to die.");
             Console.WriteLine("So, dear adventurer, what is your name?");
             charname = Console.ReadLine();
-            Console.WriteLine(charname + "Brilliant.");
+            Console.WriteLine(charname + ". Brilliant.");
             Console.WriteLine("Now, what is your class?");
             Console.WriteLine("[B] Barbarian");
             Console.WriteLine("[W] Wizard");
@@ -62,6 +62,9 @@ namespace Command_Line_Game1
                 Console.WriteLine("your HEALTH is " + charhealth);
                 Console.WriteLine("Your DAMAGE is " + chardamage);
             }
+            Console.WriteLine("Now, it is time for us to go forward");
+            Console.WriteLine("Whilist travelling through the dark, eerie dungeon, you hear the sound of a horrid croak echo through the halls of the dungeon.");
+            //Test Commit
         }
     }
 }
