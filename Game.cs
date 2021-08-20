@@ -6,116 +6,19 @@ namespace Command_Line_Game1
 {
     class Game
     {
+        string charname = "Fool";
+        string UserInput = "";
+        bool validInput = false;
+        string char_class;
+        bool gameover = false;
+        float charhealth;
+        int chardamage;
+        int numOfChests = 4;
+
         public void Run()
         {
-            //For-Loop Excr.
-            int numberOfTries = 4;
-            string riddle_answer;
-            bool riddleSolved;
-            Console.WriteLine("An old man with a monkey on his back approaches you." + "\n \" I can offer you immortality as long as you solve my riddle within  " + numberOfTries + " tries. He says");
-            Console.ReadKey();
-            for (int i = 0; i < numberOfTries; i++)
-            {
-                int numOfAttmpsLeft = numberOfTries;
-                Console.Clear();
-                Console.WriteLine("What has to be broken before you can use it.");
-                Console.WriteLine("Attempts remaining " + (numOfAttmpsLeft - i));
-                Console.Write(">");
-                riddle_answer = Console.ReadLine();
-                if (riddle_answer.ToLower() == "egg")
-                {
-                    Console.WriteLine("Congratulations. You gained immortality");
-                    Console.ReadKey();
-                    Console.Clear();
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect");
-                    Console.ReadKey();
-                    Console.Clear();
-                }
-            }
-
-
-
-            //Job Conditional Excr.
-            string job;
-            string charjob;
-            bool ValidJob = false;
-            int power;
-            int health;
-            Console.WriteLine("What job would you like?");
-            Console.WriteLine("[1] Lizard");
-            Console.WriteLine("[2] Knight");
-            Console.Write(">");
-            job = Console.ReadLine();
-            while (!ValidJob)
-            {
-                if (job == "1" || job.ToLower() == "lizard")
-                {
-                    ValidJob = true;
-                    charjob = "Lizard";
-                    health = 3000;
-                    power = 30;
-
-                    Console.WriteLine("Your job is " + charjob);
-                    Console.ReadKey();
-                    Console.WriteLine("Your health is " + health);
-                    Console.ReadKey();
-                    Console.WriteLine("Your power is " + power);
-                    Console.ReadKey();
-                }
-                else if (job == "2" || job.ToLower() == "Kinght")
-                {
-                    ValidJob = true;
-                    charjob = "Kight";
-                    health = 4000;
-                    power = 40;
-
-                    Console.WriteLine("Your job is " + charjob);
-                    Console.ReadKey();
-                    Console.WriteLine("Your health is " + health);
-                    Console.ReadKey();
-                    Console.WriteLine("Your power is " + power);
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input.");
-                    Console.ReadKey();
-                    Console.Clear();
-                    Console.WriteLine("What job would you like?");
-                    Console.WriteLine("[1] Lizard");
-                    Console.WriteLine("[2] Knight");
-                    Console.Write(">");
-                    job = Console.ReadLine();
-                }
-            }
-
-            //Health Excr.
-            int healthRegen = 50;
-            health = 17;
-            Console.Write("Current Health: " + (health + healthRegen));
-            Console.Clear();
-
-            //Name Excr.
-            string name = "Fool";
-            Console.WriteLine("Enter Your name");
-            name = Console.ReadLine();
-            Console.WriteLine("Welcome, " + name);
-            Console.Clear();
-
-
             //Text_Adventure Excr.
-            string charname = "Fool";
-            string UserInput = "";
-            bool validInput = false;
-            string char_class;
-            bool gameover = false;
-            float charhealth;
-            int chardamage;
-            int numOfChests = 4;
+            
             Console.WriteLine("Welcome adventurer");
             Console.ReadKey();
             Console.WriteLine("You have been chosen to carry out a daring advanture.");
@@ -205,23 +108,45 @@ namespace Command_Line_Game1
                     Console.ReadKey();
                     Console.WriteLine("In front of the chest is a sign, which reads \"One of these chests holds the key to the doors in front, and another a Mimic that will devour you whole\""
                         + "\"And these last two chests hold nothing at all");
-                    Console.ReadKey();
                     for (int i = 0; i < numOfChests; i++)
                     {
                         int chestsLeft = numOfChests;
                         Console.WriteLine("Which Chest will you choose?" + "\n [1] Chest 1 \n[2] Chest 2 \n [3] Chest 3 \n [4] Chest 4");
+                        Console.WriteLine("Number of attempts left: " + (chestsLeft = chestsLeft - i));
                         string ChestChosen = Console.ReadLine();
                         if (ChestChosen == "1" || ChestChosen.ToLower() == "chest 1")
                         {
-
+                            Console.WriteLine("Upon examining the first chest, four animalistic legs sprout out from the bottom. The chest opens to reveal a large toothy mouth that could devour you whole.");
+                            Console.WriteLine("The chest violently attacks you, killing you almost instantly.");
+                            break;
                         }
                         else if (ChestChosen == "3" || ChestChosen.ToLower() == "chest 3")
                         {
-
+                            Console.WriteLine("Upon examining the third chest, you unlock it to find a golden key matching the doors in front of you.");
+                            Console.WriteLine("The chest violently attacks you, killing you almost instantly.");
+                            break;
                         }
                         else
-                        { 
-
+                        {
+                            if ((ChestChosen == "2" || ChestChosen.ToLower() == "chest 2") || (ChestChosen == "4" || ChestChosen.ToLower() == "chest 4"))
+                            {
+                                if (ChestChosen == "2" || ChestChosen.ToLower() == "chest 2")
+                                {
+                                    Console.WriteLine("Upon examining the second chest, you're dissapointed to find nothing at all.");
+                                    Console.WriteLine("You don't get the key.");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Upon examining the fourth chest, you're dissapointed to find nothing at all.");
+                                    Console.WriteLine("You don't get the key.");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid Input. You don't get the key.");
+                            }
                         }
                     }
 
@@ -243,6 +168,70 @@ namespace Command_Line_Game1
                     UserInput = Console.ReadLine();
                 }
             }
+        }
+
+
+        //For-Loop Demonstration.
+        public void MonkeyManExcr()
+        {
+            //For-Loop Excr.
+            int numberOfTries = 4;
+            string riddle_answer;
+            Console.WriteLine("An old man with a monkey on his back approaches you." + "\n \" I can offer you immortality as long as you solve my riddle within  " + numberOfTries + " tries. He says");
+            Console.ReadKey();
+            for (int i = 0; i < numberOfTries; i++)
+            {
+                int numOfAttmpsLeft = numberOfTries;
+                Console.Clear();
+                Console.WriteLine("What has to be broken before you can use it.");
+                Console.WriteLine("Attempts remaining " + (numOfAttmpsLeft - i));
+                Console.Write(">");
+                riddle_answer = Console.ReadLine();
+                if (riddle_answer.ToLower() == "egg")
+                {
+                    Console.WriteLine("Congratulations. You gained immortality");
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            }
+        }
+
+        //Option Choices
+        public void ChooseClass(string desc, string option1, string option2, string option3)
+        {
+            string input = "";
+            int inputrecieved = 1;
+            while (!(inputrecieved == 1 || inputrecieved == 2))
+            { 
+
+            }
+        }
+
+        //Health Excr.
+        public void HealthVariableExcr()
+        {
+            int healthRegen = 50;
+            int health = 100;
+            health = 17;
+            Console.Write("Current Health: " + (health + healthRegen));
+            Console.Clear();
+        }
+
+        //Name Excr.
+        public void NameExcr()
+        {
+            string name = "Fool";
+            Console.WriteLine("Enter Your name");
+            name = Console.ReadLine();
+            Console.WriteLine("Welcome, " + name);
+            Console.Clear();
         }
     }
 }
