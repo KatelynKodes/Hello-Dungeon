@@ -6,6 +6,7 @@ namespace Command_Line_Game1
 {
     class Game
     {
+        //Variables
         string charname = "Fool";
         string UserInput = "";
         bool validInput;
@@ -19,101 +20,75 @@ namespace Command_Line_Game1
         {
             validInput = false;
             gameover = false;
-            Console.WriteLine("Welcome adventurer");
-            Console.ReadKey();
-            Console.WriteLine("You have been chosen to carry out a daring advanture.");
-            Console.ReadKey();
-            Console.WriteLine("This adventure being...travelling amongst one of the most dangerous dungeons known to man");
-            Console.ReadKey();
-            Console.WriteLine("The Horrible Dungeon of Deadly Creatures");
-            Console.ReadKey();
-            Console.WriteLine("Whoever named this dungeon is definitelty terrible with names.");
-            Console.ReadKey();
-            Console.WriteLine("Speaking of names, dear adventurer, what is your name?");
-            Console.ReadKey();
-            Console.WriteLine(">");
-            charname = Console.ReadLine();
-            Console.WriteLine(charname + ". Brilliant.");
-            Console.ReadKey();
-            Console.WriteLine("Now, what is your class? \n [B] Barbarian \n [W] Wizard \n [H] Healer");
-            Console.WriteLine(">");
-            char_class = Console.ReadLine();
-            while (!validInput)
+            while (!gameover)
             {
-                if (char_class.ToLower() == "b")
+                Console.WriteLine("Welcome adventurer");
+                Console.ReadKey();
+                Console.WriteLine("You have been chosen to carry out a daring advanture.");
+                Console.ReadKey();
+                Console.WriteLine("This adventure being...travelling amongst one of the most dangerous dungeons known to man");
+                Console.ReadKey();
+                Console.WriteLine("The Horrible Dungeon of Deadly Creatures");
+                Console.ReadKey();
+                Console.WriteLine("Whoever named this dungeon is definitelty terrible with names.");
+                Console.ReadKey();
+                Console.WriteLine("Speaking of names, dear adventurer, what is your name?");
+                Console.ReadKey();
+                Console.WriteLine(">");
+                charname = Console.ReadLine();
+                Console.WriteLine(charname + ". Brilliant.");
+                Console.ReadKey();
+                Console.Clear();
+                Console.WriteLine("Now, what is your class? \n [B] Barbarian \n [W] Wizard \n [H] Healer");
+                Console.WriteLine(">");
+                char_class = Console.ReadLine();
+                while (!validInput)
                 {
-                    validInput = true;
-                    Console.WriteLine("Barbarian. wonderful choice.");
-                    charhealth = 1000;
-                    chardamage = 45;
-                    Console.WriteLine("your HEALTH is " + charhealth);
-                    Console.WriteLine("Your DAMAGE is " + chardamage);
-                }
-                else if (char_class.ToLower() == "w")
-                {
-                    validInput = true;
-                    Console.WriteLine("Wizard. wonderful choice.");
-                    charhealth = 1000;
-                    chardamage = 35;
-                    Console.WriteLine("your HEALTH is " + charhealth);
-                    Console.WriteLine("Your DAMAGE is " + chardamage);
-                }
-                else if (char_class.ToLower() == "h")
-                {
-                    validInput = true;
-                    Console.WriteLine("Healer. wonderful choice.");
-                    charhealth = 1000;
-                    chardamage = 25;
-                    Console.WriteLine("your HEALTH is " + charhealth);
-                    Console.WriteLine("Your DAMAGE is " + chardamage);
-                }
-                else
-                {
-                    Console.WriteLine("That is not a valid class");
-                    char_class = Console.ReadLine();
-                }
-            }
-            validInput = false;
-            Console.WriteLine("Now, it is time for us to go forward");
-            Console.ReadKey();
-            BullfrogEncounter();
-            validInput = false;
-            if (!gameover)
-            { 
-                ChestEncounter();
-                validInput = false;
-                if (!gameover)
-                {
-                    GooseEncounter();
-                    validInput = false;
-                    if (!gameover)
+                    if (char_class.ToLower() == "b")
                     {
-                        BingusEncounter();
-                        validInput = false;
-                        Console.WriteLine("You exit the dungeon, filled with glee that you managed to escape alive.");
-                        Console.WriteLine("You go back to the town, ready to go home and prepare yourself for the adventure that " +
-                            "awaits you tomorrow.");
-                        PlayAgain();
-
+                        validInput = true;
+                        Console.WriteLine("Barbarian. wonderful choice.");
+                        charhealth = 1000;
+                        chardamage = 45;
+                        Console.WriteLine("your HEALTH is " + charhealth);
+                        Console.WriteLine("Your DAMAGE is " + chardamage);
+                    }
+                    else if (char_class.ToLower() == "w")
+                    {
+                        validInput = true;
+                        Console.WriteLine("Wizard. wonderful choice.");
+                        charhealth = 1000;
+                        chardamage = 35;
+                        Console.WriteLine("your HEALTH is " + charhealth);
+                        Console.WriteLine("Your DAMAGE is " + chardamage);
+                    }
+                    else if (char_class.ToLower() == "h")
+                    {
+                        validInput = true;
+                        Console.WriteLine("Healer. wonderful choice.");
+                        charhealth = 1000;
+                        chardamage = 25;
+                        Console.WriteLine("your HEALTH is " + charhealth);
+                        Console.WriteLine("Your DAMAGE is " + chardamage);
                     }
                     else
                     {
-                        PlayAgain();
+                        Console.WriteLine("That is not a valid class");
+                        char_class = Console.ReadLine();
                     }
                 }
-                else
-                {
-                    PlayAgain();
-                }
-            }
-            else
-            {
-                PlayAgain();
+                validInput = false;
+                Console.WriteLine("Now, it is time for us to go forward");
+                Console.ReadKey();
+                BullfrogEncounter();
             }
         }
 
         //TEXT ADVENTURE METHODS
-
+        /// <summary>
+        /// Starts the first encounter, Bullfrog.
+        /// input based, player must choose the correct option 
+        /// </summary>
         //Encounter1
         public void BullfrogEncounter()
         {
@@ -121,6 +96,7 @@ namespace Command_Line_Game1
             Console.ReadKey();
             Console.WriteLine("It's a bullfrog, specifically a large one. That's like half the size of you.");
             Console.ReadKey();
+            Console.Clear();
             Console.WriteLine("What do you do?");
             Console.WriteLine("[A] Attack");
             Console.WriteLine("[B] Interact");
@@ -137,6 +113,8 @@ namespace Command_Line_Game1
                     Console.ReadKey();
                     Console.WriteLine("The frog dies, you gain slime but lose your sense of morality");
                     Console.ReadKey();
+                    validInput = false;
+                    ChestEncounter();
                 }
                 else if (UserInput.ToLower() == "Interact" || UserInput.ToLower() == "b")
                 {
@@ -147,7 +125,7 @@ namespace Command_Line_Game1
                     Console.ReadKey();
                     Console.WriteLine("GameOver");
                     Console.ReadKey();
-                    gameover = true;
+                    PlayAgain();
                 }
                 else
                 {
@@ -158,6 +136,10 @@ namespace Command_Line_Game1
         }
 
         //Encounter2
+        /// <summary>
+        /// Starts the second encounter, Chests.
+        /// Player has to choose the correct chest before for-loop closes
+        /// </summary>
         public void ChestEncounter()
         {
             bool checkedChest2 = false;
@@ -173,6 +155,7 @@ namespace Command_Line_Game1
             for (int i = 0; i < numOfChests; i++)
             {
                 int chestsLeft = numOfChests;
+                Console.Clear();
                 Console.WriteLine("Which Chest will you choose?" + "\n [1] Chest 1 \n [2] Chest 2 \n [3] Chest 3 \n [4] Chest 4");
                 Console.WriteLine("Number of attempts left: " + (chestsLeft = chestsLeft - i));
                 string ChestChosen = Console.ReadLine();
@@ -180,7 +163,6 @@ namespace Command_Line_Game1
                 {
                     Console.WriteLine("Upon examining the first chest, four animalistic legs sprout out from the bottom. The chest opens to reveal a large toothy mouth that could devour you whole.");
                     Console.WriteLine("The chest violently attacks you, killing you almost instantly.");
-                    gameover = true;
                     break;
                 }
                 else if (ChestChosen == "3" || ChestChosen.ToLower() == "chest 3")
@@ -204,6 +186,7 @@ namespace Command_Line_Game1
                             {
                                 Console.WriteLine("Upon examining the second chest, you're dissapointed to find nothing at all.");
                                 Console.WriteLine("You don't get the key.");
+                                checkedChest2 = true;
                             }
                         }
                         else
@@ -216,6 +199,7 @@ namespace Command_Line_Game1
                             {
                                 Console.WriteLine("Upon examining the fourth chest, you're dissapointed to find nothing at all.");
                                 Console.WriteLine("You don't get the key.");
+                                checkedChest4 = true;
                             }
                         }
                     }
@@ -225,14 +209,17 @@ namespace Command_Line_Game1
                     }
                 }
             }
-            if ()
+            if (keynotfound)
             {
-                
+                PlayAgain();
             }
-            
         }
 
         //Encounter3
+        /// <summary>
+        /// Starts the third encounter, Goose.
+        /// input based.
+        /// </summary>
         public void GooseEncounter()
         {
             Console.WriteLine("Once you pass through the doors after the chests, you're met with yet another treacherous beast.");
@@ -243,6 +230,7 @@ namespace Command_Line_Game1
             Console.ReadKey();
             Console.WriteLine("Somehow the chests were better.");
             Console.ReadKey();
+            Console.Clear();
             Console.WriteLine("Anyways, what do you do? \n [A] Attack Goose \n [B] Threaten Goose \n [C] Try to pass Goose");
             Console.WriteLine(">");
             UserInput = Console.ReadLine();
@@ -261,6 +249,7 @@ namespace Command_Line_Game1
                     Console.ReadKey();
                     Console.WriteLine("It also can't commit tax fraud anymore so that's good");
                     Console.ReadKey();
+                    BingusEncounter();
                 }
                 else if (UserInput.ToLower() == "b" || UserInput.ToLower() == "threaten" || UserInput.ToLower() == "threaten goose")
                 {
@@ -275,6 +264,7 @@ namespace Command_Line_Game1
                     Console.ReadKey();
                     Console.WriteLine("got gun.");
                     Console.ReadKey();
+                    BingusEncounter();
                 }
                 else if (UserInput.ToLower() == "c" || UserInput.ToLower() == "pass" || UserInput.ToLower() == "pass goose")
                 {
@@ -290,7 +280,7 @@ namespace Command_Line_Game1
                     Console.WriteLine("It kills you as you desprately try to reach for the door.");
                     Console.ReadKey();
                     Console.WriteLine("Game Over");
-                    gameover = true;
+                    PlayAgain();
                 }
                 else
                 {
@@ -301,6 +291,10 @@ namespace Command_Line_Game1
         }
 
         //Encounter4
+        /// <summary>
+        /// Starts final encounter, Bingus.
+        /// turn based.
+        /// </summary>
         public void BingusEncounter()
         {
             int BingusPets = 0;
@@ -323,11 +317,13 @@ namespace Command_Line_Game1
                 if (bingusTurn)
                 {
                     Console.WriteLine("Bingus takes one of his paws and swipes at you. Attacking you");
+                    Console.ReadKey();
                     Playerdamage++;
                     bingusTurn = false;
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("What do you do?");
                     Console.WriteLine(" [A] Attack Bingus \n [B] Pet Bingus");
                     UserInput = Console.ReadLine();
@@ -362,25 +358,37 @@ namespace Command_Line_Game1
             {
                 Console.WriteLine("You finally manage to kill the almighty Bingus.");
                 Console.WriteLine("Your are truly a beast to be reckoned with.");
+                Console.WriteLine("You exit the dungeon, filled with glee that you managed to escape alive.");
+                Console.WriteLine("You go back to the town, ready to go home and prepare yourself for the adventure that " +
+                    "awaits you tomorrow.");
+                PlayAgain();
             }
             else if (BingusPets == 3)
             {
                 Console.WriteLine("You manage to tame the almighty Bingus.");
                 Console.WriteLine("Your are truly a beast to be reckoned with.");
+                Console.WriteLine("You exit the dungeon, filled with glee that you managed to escape alive.");
+                Console.WriteLine("Along with your new pet cat friend that is-");
+                Console.WriteLine("You go back to the town, ready to go home and prepare yourself for the adventure that " +
+                    "awaits you tomorrow.");
+                PlayAgain();
             }
             else if (Playerdamage == 3)
             {
                 Console.WriteLine("You die a terrible death at the paws of bingus.");
                 Console.WriteLine("Much like those who have fallen before you.");
-                gameover = true;
+                PlayAgain();
             }
         }
 
         //PlayAgain Method
+        /// <summary>
+        /// Asks player if they would like to restart the game
+        /// </summary>
         public void PlayAgain()
         {
             Console.WriteLine("Would you like to play again?");
-            Console.WriteLine("[Y] Yes \n [N] No");
+            Console.WriteLine(" [Y] Yes \n [N] No");
             Console.WriteLine(">");
             UserInput = Console.ReadLine();
             while (!validInput)
@@ -389,14 +397,19 @@ namespace Command_Line_Game1
                 {
                     validInput = true;
                     Console.Clear();
-                    Run();
+                    gameover = false;
                 }
                 else if(UserInput.ToLower() == "n" || UserInput.ToLower() == "no")
                 {
                     validInput = true;
+                    Console.Clear();
+                    gameover = true;
                 }
             }
         }
+
+
+
 
 
         //LODIS DEMONSTRATIONS
