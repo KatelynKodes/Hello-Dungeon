@@ -213,6 +213,10 @@ namespace Command_Line_Game1
             {
                 PlayAgain();
             }
+            else
+            {
+                GooseEncounter();
+            }
         }
 
         //Encounter3
